@@ -11,7 +11,8 @@ def get_coordinate(registro):
     Returns:
         Un string con la coordenada del mapa
     """
-    pass  # Reemplazar con tu implementación
+    coordenada = registro[1]
+    return coordenada
 
 
 def convert_coordinate(coordenada):
@@ -24,7 +25,11 @@ def convert_coordinate(coordenada):
     Returns:
         Una tupla con los componentes individuales (ej: ("2", "A"))
     """
-    pass  # Reemplazar con tu implementación
+    coordenada_separada = coordenada[0]
+    coordenada_dos= coordenada[1]
+
+    coordenada_ff= tuple(coordenada_separada + coordenada_dos)
+    return coordenada_ff
 
 
 def create_record(registro_azara, registro_rui):
@@ -47,7 +52,13 @@ def create_record(registro_azara, registro_rui):
     Returns:
         Tupla combinada si las coordenadas coinciden, o "not a match" si no.
     """
-    pass  # Reemplazar con tu implementación
+    registroa= get_coordinate(registro_azara)
+    registro_corregido= convert_coordinate(registroa)
+    if registro_corregido == registro_rui[1]:
+        nuevo_registro= registro_azara + registro_rui
+        return nuevo_registro
+    else:
+        return "not a match"
 
 
 def sum_tuple(numeros):
@@ -68,7 +79,16 @@ def sum_tuple(numeros):
         sum_tuple((1, 2, 3, 4, 5)) -> 15
         sum_tuple(()) -> 0
     """
-    pass  # Reemplazar con tu implementación
+    if numeros == ():
+        return 0
+    acumulador = 0
+    for numero in numeros:
+            acumulador = acumulador + numero
+    return acumulador
+
+
+
+
 
 
 def count_occurrences(tupla, elemento):
@@ -89,7 +109,11 @@ def count_occurrences(tupla, elemento):
         count_occurrences((1, 2, 2, 3, 2), 2) -> 3
         count_occurrences(('a', 'b', 'a'), 'c') -> 0
     """
-    pass  # Reemplazar con tu implementación
+    contador = 0
+    for i in tupla:
+        if elemento == i:
+            contador = contador + 1
+    return contador
 
 
 def find_index(tupla, elemento):
@@ -111,7 +135,10 @@ def find_index(tupla, elemento):
         find_index(('a', 'b', 'c', 'b'), 'b') -> 1
         find_index((1, 2, 3), 9) -> -1
     """
-    pass  # Reemplazar con tu implementación
+    for i, valor in enumerate(tupla):
+        if valor == elemento:
+            return i
+    return -1
 
 
 def filter_positives(numeros):
@@ -129,4 +156,12 @@ def filter_positives(numeros):
         filter_positives((-3, 1, 0, 5, -2, 7)) -> (1, 5, 7)
         filter_positives((-1, -2, -3)) -> ()
     """
-    pass  # Reemplazar con tu implementación
+
+    lista_nueva= []
+    for numero in numeros:
+
+        if numero > 0:
+                lista_nueva.append(numero)
+    return tuple(lista_nueva)
+
+
